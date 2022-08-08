@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% block title %}minute taker{% endblock %} {% block content
   %}
+  
+
   <div class="container  p-4 ">
     <div class="container shadow p-4 " style="background-color: aliceblue;">
     <form class="form-inline my-2 my-lg-0" style="float: right;">
@@ -10,12 +12,20 @@
     </div>
   </div>
   <div class="container p-4 ">
-    <button type="submit"class="btn btn-info" style="color: black;">Create New Minutes</button>
+    <button type="submit" class="btn btn-info" onclick="openForm()" style="color: black;">Create New Minutes</button>
+  </div>
+
+  <div class="form-popup col shadow p-4 mb-4 bg-white mx-auto" style="width: 400px; border-radius: 7px; display: none;" id="newMinutes" style="width: 300px;">
+    <form >
+      <input class="form-control" placeholder="Enter minutes name"  required>
+      <button type="submit" class="btn">Create</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+    </form>
   </div>
   
- <!-- <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" 
-  autocomplete="off" onclick="hide()" class="float-right">></button> -->
-  <div   class="container-fluid shadow p-4 "  style="background-color: rgb(57, 163, 249);">
+  <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" 
+  autocomplete="off" onclick="hide()" class="float-right">></button>
+  <div   class="container-fluid shadow p-4 "  id="S1D"style="background-color: rgb(57, 163, 249);">
     <h2 style="color: white;">
       Event
     </h2>

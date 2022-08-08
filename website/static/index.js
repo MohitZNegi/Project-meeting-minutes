@@ -6,40 +6,24 @@ function deleteNote(noteId) {
       window.location.href = "/";
     });
   }
-
-  // About Us page
-// button to change CEO to MD & MD to CEO
-var btn_click_MD = 0;
-function MDFunction() {
-  if (0 == btn_click_MD % 2){
-  document.getElementById("MD-D").innerHTML = "George brings a breadth of global industry knowledge from his work on infrastructure projects in the U.S. and Middle East. He is well versed in procurement, design, tendering construction management and maintenance, and stakeholder management.";
-  document.getElementById("MD-T").innerHTML = "Managing Director (MD)";
-  document.getElementById("MD-N").innerHTML = "George Smith";
-  document.getElementById('CEO').src='Project_Interior_resources/MD.png';
-  document.getElementById("MD-B").innerHTML = "Meet Our CEO";
-  btn_click_MD++;
+// form pop up
+  function openForm() {
+    document.getElementById("newMinutes").style.display = "block";
   }
-  else if (0 != btn_click_MD % 2)
-  {
-    document.getElementById("MD-D").innerHTML = "Captivate Interiors was founded by Jeff Gate. According to him, a place without an interior is like a body without a soul. He wants to provide a sustainable, natural, and futuristic interior that makes a space livable.";
-  document.getElementById("MD-T").innerHTML = "Chief Executive Officer (CEO)";
-  document.getElementById("MD-N").innerHTML = "Jeff Gate";
-  document.getElementById('CEO').src='Project_Interior_resources/CEO.jpg';
-  document.getElementById("MD-B").innerHTML = "Meet Our MD";
-  btn_click_MD++;
+  
+  function closeForm() {
+    document.getElementById("newMinutes").style.display = "none";
   }
-}
 
-// Buttons to hide a particular staff
+// Buttons to hide a particular table
+
 var btn_click_S1 = 0;
 function hide() {
   
     if (0 == btn_click_S1 % 2){
-    //document.getElementById("S1I").style.display= "none";
-    data = document.getElementById("S1D").innerHTML = "hell0"
+    data = document.getElementById("S1D").style.display="none"
     btn_click_S1++;}
     else if (0 != btn_click_S1 % 2){
-      //document.getElementById("S1I").style.display= "block";
       data =  document.getElementById("S1D").style.display= "block";
     btn_click_S1++;}
    
@@ -94,12 +78,6 @@ else if (0 != btn_click_S5 % 2){
 btn_click_S5++;}
 }
 
-// contact page
-// to change text color and font size
-function Contact_HFS_Function() { document.getElementById("ContFS").style.fontSize= "40px";
-}
-function Contact_HFC_Function() { document.getElementById("ContFS").style.color= "Yellow";}
-// To align text to right
-function Contact_Info_Function() { document.getElementById("Continfo").style.textAlign= "right";} 
+
 
 
