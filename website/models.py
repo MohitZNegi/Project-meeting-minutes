@@ -22,7 +22,7 @@ class Minute(db.Model):
     date_of_comp = db.Column(db.String(10))
     
    
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     meetings_id = db.Column(db.Integer, db.ForeignKey('meeting.id'))
     def __repr__(self):

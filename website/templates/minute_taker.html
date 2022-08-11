@@ -33,11 +33,13 @@
         {{ meeting.name}}
         {{ meeting.date}}
       </h2>
+      
        <a href="{{ url_for('views.delete', id=meeting.id)}}">delete</a>
       </li>
       {% endfor %}
     </ul>
   </a>
+  
   
   
  

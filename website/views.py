@@ -32,12 +32,14 @@ def home():
     
 @views.route('/min/<int:id>', methods=['GET', 'POST'])
 @login_required
+
 def minute(id):
     task = Meeting.query.get_or_404(id)
-    meetings_Id = request.get_data('meeting.id') #need to get table for each meeting sorted
+    
+     #need to get table for each meeting sorted
     user_id = current_user.id
     id = current_user.id
-    if id == user_id: 
+    if id == user_id:
         if request.method == 'POST':
             dates = request.form.get('minute.dates')
             topic = request.form.get('minute.topic')
@@ -50,10 +52,12 @@ def minute(id):
             new_minute = Minute(dates=dates,topic=topic,attendees=attendees,raised_by=raised_by,
             action=action,to_be_actionedby=actionedby,
             info=info, date_of_comp=date_of_comp, user_id=current_user.id)
-            db.session.add(new_minute, task)
+            db.session.add(new_minute)
+    
             db.session.commit()
             flash('Note added!', category='success')
-    return render_template("min.html", user=current_user, task=task )
+    return render_template("min.html", user=current_user, task=task, meeting=db.session.query(Meeting))
+    
 
 @views.route('/delete/<int:id>')
 @login_required
