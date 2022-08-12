@@ -27,7 +27,7 @@ def home():
         flash('Note added!', category='success')
         return redirect('/')
     else:    
-        meets = Meeting.query.order_by(Meeting.id).all()
+        meets = Meeting.query.order_by(Meeting.date).all()
     return render_template("minute_taker.html", user=current_user, meets=meets)
     
 @views.route('/min/<int:id>', methods=['GET', 'POST'])
@@ -35,11 +35,12 @@ def home():
 
 def minute(id):
     task = Meeting.query.get_or_404(id)
-    
+    meeting = Meeting.query.filter_by(id=id).first()
+    current_meeting = Meeting.query.filter_by(id=id).first()
      #need to get table for each meeting sorted
     user_id = current_user.id
     id = current_user.id
-    if id == user_id:
+    if id == user_id and meeting == current_meeting:
         if request.method == 'POST':
             dates = request.form.get('minute.dates')
             topic = request.form.get('minute.topic')
@@ -56,7 +57,7 @@ def minute(id):
     
             db.session.commit()
             flash('Note added!', category='success')
-    return render_template("min.html", user=current_user, task=task, meeting=db.session.query(Meeting))
+    return render_template("min.html", user=current_user, task=task, meeting=current_meeting)
     
 
 @views.route('/delete/<int:id>')
