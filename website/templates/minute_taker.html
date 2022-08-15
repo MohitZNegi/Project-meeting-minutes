@@ -9,30 +9,29 @@
         <div  style="background-color: rgba(0, 0, 0, 0); width:400px; text-align: right;">
       <img src="{{ url_for('static', filename='images/calendar.png') }}" alt="" style="width:50px" />
     </div>
-    <div  style="background-color: rgba(255, 0, 0, 0); width:400px">
+    <div  style="background-color: rgba(190, 21, 21, 0); width:400px">
     <h1 >Minutes</h1>
     </div>
     <form class="form-inline my-2 my-lg-0" style="float: right;">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="Project_Interior_resources/search.png" style="height:24px"></button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn" style="width: 45px;"><img src="{{ url_for('static', filename='images/search.png') }}" alt="" style="width:25px" /></button>
     </form>
     </div>
   </div>
   </div>
   <div class="container p-4 ">
-    <button type="submit" class="btn btn-info" onclick="openForm()" style="color: black;">Create New Minutes</button>
+    <button type="submit" id="btn" class="btn btn-success" onclick="openForm()" style="color: black;"><img src="{{ url_for('static', filename='images/create.png') }}" alt="" style="width:35px" /><b>Create New Minutes</b></button>
   </div>
 
   <div class="form-popup col shadow p-4 mb-4 bg-white mx-auto" style="width: 400px; border-radius: 7px; display: none;" id="newMinutes" style="width: 300px;">
     <form method="POST" action="" >
       <input class="form-control"  name="meeting.name" id="meeting.name" placeholder="Enter minutes name"  required><br>
-      <button type="submit"    class="btn">Create</button>
-      <button type="button" class="btn alert-danger" onclick="closeForm()">Cancel</button>
+      <button type="submit"    id="btn" class="btn btn-success" style="color: black;">Create</button>
+      <button type="button" class="btn btn-danger" onclick="closeForm()">Cancel</button>
     </form>
   </div>
   
-  <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" 
-  autocomplete="off" onclick="hide()" class="float-right">></button>
+  
   <div   class="container shadow p-4 "style="background-color: #03cf9c;" >
     <ul class="list-group list-group-flush" id="meetings">
       {% for meeting in user.meetings %}

@@ -15,6 +15,14 @@ function deleteNote(noteId) {
     document.getElementById("newMinutes").style.display = "none";
   }
 
+  function openTable() {
+    document.getElementById("table").style.display = "block";
+  }
+  
+  function closeTable() {
+    document.getElementById("table").style.display = "none";
+  }
+
 // Buttons to hide a particular table
 
 var btn_click_S1 = 0;
