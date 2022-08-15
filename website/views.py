@@ -21,14 +21,17 @@ def home():
         
         name = request.form.get('meeting.name')
         date = request.form.get('meeting.date')
-        new_meeting = Meeting(name=name, date=date, user_id=current_user.id)
-        db.session.add(new_meeting)
-        db.session.commit()
-        flash('Note added!', category='success')
-        return redirect('/')
-    else:    
-        meets = Meeting.query.order_by(Meeting.date).all()
-    return render_template("minute_taker.html", user=current_user, meets=meets)
+     
+        if len(name) > 20:
+            flash('Meeting name can only be 20 characters long.', category='error')
+        else:
+             new_meeting = Meeting(name=name, date=date, user_id=current_user.id)
+             db.session.add(new_meeting)
+             db.session.commit()
+             flash('Meeting added!', category='success')
+             return redirect('/')
+   
+    return render_template("minute_taker.html", user=current_user)
     
 @views.route('/min/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -50,13 +53,15 @@ def minute(id):
             actionedby = request.form.get('minute.to_be_actionedby')
             info = request.form.get('minute.info')
             date_of_comp = request.form.get('minute.date_of_comp')
-            new_minute = Minute(dates=dates,topic=topic,attendees=attendees,raised_by=raised_by,
-            action=action,to_be_actionedby=actionedby,
-            info=info, date_of_comp=date_of_comp, user_id=current_user.id)
-            db.session.add(new_minute)
-    
-            db.session.commit()
-            flash('Note added!', category='success')
+            if len(topic) > 20:
+                flash('Topic can only be 20 characters long.', category='error')
+            else:    
+                new_minute = Minute(dates=dates,topic=topic,attendees=attendees,raised_by=raised_by,
+                action=action,to_be_actionedby=actionedby,
+                info=info, date_of_comp=date_of_comp, user_id=current_user.id)
+                db.session.add(new_minute)
+                db.session.commit()
+                flash('Note added!', category='success')
     return render_template("min.html", user=current_user, task=task, meeting=current_meeting)
     
 

@@ -29,10 +29,10 @@ var btn_click_S1 = 0;
 function hide() {
   
     if (0 == btn_click_S1 % 2){
-    data = document.getElementById("S1D").style.display="none"
+    data = document.getElementById("form").style.display="none"
     btn_click_S1++;}
     else if (0 != btn_click_S1 % 2){
-      data =  document.getElementById("S1D").style.display= "block";
+      data =  document.getElementById("form").style.display= "block";
     btn_click_S1++;}
    
  
