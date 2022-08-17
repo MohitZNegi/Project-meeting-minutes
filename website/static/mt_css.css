@@ -47,7 +47,7 @@ body{
    color: #dfad23;
  }
   mark{
-   background-color: rgb(252, 86, 57);
+   background-color: #03cf9c;
    opacity: 0.9;
    color: white;
  }
@@ -73,15 +73,29 @@ body{
  
   }
   /* Create three equal columns that floats next to each other */
-  .container {
+  #container {
 
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
+
+   width: 2000px;
    
 
    }
+   .contain {
+
+    background-repeat: no-repeat;
+    background-size: cover;
  
+    background-image: url('/static/images/minute_forms.png');
+    
+ 
+    }
+    #contact{
+      height: 50px;
+      width: 50px;
+    }
    .col, .cols, .col-6{
         background-color: rgb(255, 255, 255);
        

@@ -48,10 +48,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
 
-<header class="fixed-position" >
+<header  >
       
-        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html" style="color: white;">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3 ">
+          <a class="navbar-brand" href="/home" style="color: white;">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" style="width:50px" /><span style="font-size: 25px;">
              Minutable
             </span>
@@ -68,13 +68,7 @@
                   <a class="nav-link" id="home" href="/home" style="color: white;">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="howitworks.html" style="color: white;" > How it works</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="features.html" style="color: white;"> Features </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html" style="color: white;">Contact us</a>
+                  <a class="nav-link" href="/contacts" style="color: white;">Contact us</a>
                 </li>
             
             {% if user.is_authenticated %}
@@ -102,7 +96,7 @@
         </div>
         
           <div class="col shadow border border-dark rounded"  style="background-color: rgb(255, 255, 255); width: 30px;" >
-            <a class="nav-item nav-link" id="signUp" href="/sign-up" style="text-align: center; color:rgb(1,33,46);" >SignUp</a>
+            <a class="nav-item nav-link" id="signUp" href="/sign-up" style="text-align: center; color:rgb(1,33,46);" >Signup</a>
           </div>
         
         </div>

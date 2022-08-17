@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %}Contacts{% endblock %} {% block content
+    %}
+  
+           <!--Content Column-->
+            <div class="row">
+              <div class="container shadow p-4 mb-4" style="max-width: 1100px; background-color: rgb(255, 255, 255);">
+                
+               
+                 <h2> <mark id="ContFS">Contact Us</mark></h2>
+                <div class="row">
+                <div class="col shadow p-4 mb-4 " style="padding-left: 30px; border-radius: 7px; background-color: rgb(1,33,46);">
+                 <p style="color: white;"> <img class=" shadow rounded" src="{{ url_for('static', filename='images/Address.png') }}" alt="" id="contact" /><b>Address-</b> 90/Q Next street, Auckland</p>
+                 <p style="color: white;"> <img class=" shadow rounded" src="{{ url_for('static', filename='images/Telephone.png') }}" alt=""  id="contact" /><b>Contact Number-</b> +64 216712045 <i>(available time 9:00AM-6:00PM)</i></p>
+                 <p style="color: white;"> <img class=" shadow rounded" src="{{ url_for('static', filename='images/Email.png') }}" alt=""  id="contact" /><b>Email Address-</b> <a href=#MT.email>Minutable@gmail.com</a></p>
+                 <p style="color: white;"> <img class=" shadow rounded" src="{{ url_for('static', filename='images/Fax.png') }}" alt=""  id="contact"/><b>Fax Number-</b> 202-129-980 </p>   
+                </div>   
+              </div>
+            </div>
+              <div class="container shadow p-4 mb-4" style="max-width: 1100px; background-color: rgb(255, 255, 255);">
+                <div class="col shadow p-4 mb-4 mx-auto" style="max-width: 900px; border-radius: 7px; background-color: rgb(1,33,46);">
+                  <h4 style="color: #03cf9c;;">Get in Touch</h4>
+                  <form>
+                  <div class="form-group">
+                    <label for="name" style="color: white;">Full Name:</label>
+                    <input type="text" class="form-control" name="name" id="name"  aria-describedby="HelpId" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="email" style="color: white;">Email:</label>
+                    <input type="email" class="form-control" name="email" id="email"  aria-describedby="emailHelpId" placeholder="@gmail.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="Subject" style="color: white;">Subject:</label>
+                    <select class="form-control" name="" id="" aria-describedby="helpId" placeholder="Select one">
+                      <option value="subject" selected disabled style="display: none;">Select a subject</option>
+                      <option value="Design">Design related query</option>
+                          <option value="Material">Material realted query</option>
+                          <option value="Products">Products related query</option>
+                          <option value="Meeting">Book a meeting</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="message" style="color: white;">Message:</label>
+                    <textarea class="form-control" name="message" id="message" rows="8"></textarea>
+                  </div>
+                  <button type="submit"class="btn btn-info" id="btn" style="color: black;">Submit</button>
+              </form>
+            </div>
+            
+          </div>
+              </div>
+          
+    
+
+    {% endblock %}

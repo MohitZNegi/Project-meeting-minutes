@@ -1,25 +1,106 @@
 {% extends "base.html" %} {% block title %}minutes{% endblock %} {% block content
     %}
+    <div class="container  p-4 ">
     
-  <div class="container  p-4 ">
-    <div class="container shadow p-4 " style="background-color: aliceblue;">
-    <form class="form-inline my-2 my-lg-0" style="float: right;">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn"><img src="{{ url_for('static', filename='images/search.png') }}" alt="" style="width:25px" /></button>
-    </form>
-    <div class="col shadow" style="width: 100px;">
-      <a href="/"><h3>Back</h3></a>
+      <div class="container shadow p-4 " style="background-color: aliceblue;">
+        <div class="row">
+          <div  style="background-color: rgba(0, 0, 0, 0); width:400px; text-align: right;">
+        <img src="{{ url_for('static', filename='images/calendar.png') }}" alt="" style="width:50px" />
+      </div>
+      <div  style="background-color: rgba(190, 21, 21, 0); width:400px">
+        <h1> {{user.first_name}}'s Minutes</h1>
+      </div>
+      <form class="form-inline my-2 my-lg-0" style="float: right;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn" style="width: 45px;"><img src="{{ url_for('static', filename='images/search.png') }}" alt="" style="width:25px" /></button>
+      </form>
+      </div>
     </div>
+    </div>
+    <div class="container p-4 ">
+      <button type="submit" id="btn" class="btn btn-success" onclick="openForm()" style="color: black;"><img src="{{ url_for('static', filename='images/create.png') }}" alt="" style="width:35px" /><b>Create New Minutes</b></button>
+    </div> 
+      <div   class="container p-4 form-popup " style="max-width: 1100px; display: none;" id="newMinutes" >
+        
+      
+        <form method="POST">
+        <div class=" row">  
+          
+       
+          <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+            
+          
+            <label for="Topic"  style="color: white;">Topic</label>
+            <input type="text" name="minute.topic" id="minute.topic" class="form-control" placeholder="20 characters" aria-describedby="helpId">
+        
+        </div>
+        
+           
+       
+        <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+            
+        
+            <label for="Attendees" style="color: white;">Attendees</label>
+            <input type="text" name="minute.attendees" id="minute.attendees" class="form-control" placeholder="20 characters" aria-describedby="helpId" >
+        
+          
+         
+        </div>
+        <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+            
+        
+          <label for="raised_by"  style="color: white;">Raised by</label>
+          <input type="text" name="minute.raised_by" id="minute.raised_by" class="form-control" placeholder="20 characters" aria-describedby="helpId" >
+      
+        
+       
+      </div>
+      <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+          <label for="Action"  style="color: white;">Action Required</label>
+          <input type="text" name="minute.action" id="minute.action" class="form-control" placeholder="20 characters" aria-describedby="helpId">
+        </div>
+       
+        <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+         
+          <label for="to_be_actionedby"  style="color: white;">To be Actioned by</label>
+          <input type="text" name="minute.to_be_actionedby" id="minute.to_be_actionedby" class="form-control" placeholder="20 characters" aria-describedby="helpId">
+          
     
-    <h1 align="center">{{meeting.id}} {{meeting.name}} {{meeting.date}}</h1>
-    </div>
-  </div>
-    <div   class="container shadow p-4 "  id="S1D" style="background-color: #03cf9c;">
+      
+        </div>
+       
+        <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
+         
+          <label for="Date"  style="color: white;">Date of completion</label>
+          <input type="date" name="minute.date_of_comp" id="minute.date_of_comp" class="form-control" placeholder="" aria-describedby="helpId">
+          
+    
+      
+        </div>
+    
+      
+        </div>
+        <div class="col shadow p-4 mb-4  mx-auto" style="width: 800px; border-radius: 7px; background-color: rgb(1,33,46);">
+         
+          <label for="info" style="color: white;">Subsequent Information</label>
+          <textarea type="text" name="minute.info" id="minute.info" class="form-control" placeholder="200 characters" aria-describedby="helpId"></textarea>
+          
+    
+      
+        </div>
+        <div align="center">
+        <button type="submit" class="btn btn-success" id="btn">Add Minute</button>
+        <button type="button" class="btn btn-danger" onclick="closeForm()">Cancel</button> <!--add a single button to get all values-->
+      </div>
+       </form>
+      
+      </div>
+    <div   class="container-fluid shadow p-4 "  style="background-color: #03cf9c; width: 1400px;">
    
         <table class="table table-striped" id="minutes" >
           <thead class="thead-dark">
           <tr>
-
+            <th>Date</th>
             <th>Topic</th>
             <th>Attendees</th>
             <th>Raised by</th>
@@ -27,12 +108,14 @@
             <th>To be Actioned by</th>
             <th>Subsequent Information</th>
             <th>Date of Completion</th>
+            <th></th>
           </tr>
         </thead>
 
         {% for minute in user.minutes %}
         
         <tr>
+          <td>{{minute.dates}}</td>
           <td>{{ minute.topic}}</td>
           <td>{{ minute.attendees }}</td>
           <td>{{ minute.raised_by }}</td>
@@ -40,6 +123,7 @@
           <td>{{ minute.to_be_actionedby}}</td>
           <td>{{ minute.info }}</td>
           <td>{{ minute.date_of_comp }}</td>
+          <td><div class="col shadow border border-danger mx-auto rounded" style="background-color: rgb(245, 120, 120);"><a href="{{ url_for('views.delete', id=minute.id)}}" style="color: black;">delete</a></div></td>
         </tr>
          
          <!-- <button type="button" class="close" onClick="deleteNote({minute})">
@@ -47,80 +131,11 @@
           </button>-->
         {% endfor %}
       </table>
+      
       </div>
-         
-        <div   class="container p-4 " style="max-width: 1100px;" >
-          
-        
-          <form method="POST" action="/min/{{meeting.id}}" class="needs-validation" novalidate id="forms">
-          <div class=" row">  
-            
-         
-            <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-              
-            
-              <label for="Topic"  style="color: white;">Topic</label>
-              <input type="text" name="minute.topic" id="minute.topic" class="form-control" placeholder="20 characters" aria-describedby="helpId">
-          
-          </div>
-          
-             
-         
-          <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-              
-          
-              <label for="Attendees" style="color: white;">Attendees</label>
-              <input type="text" name="minute.attendees" id="minute.attendees" class="form-control" placeholder="20 characters" aria-describedby="helpId" >
-          
-            
-           
-          </div>
-          <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-              
-          
-            <label for="raised_by"  style="color: white;">Raised by</label>
-            <input type="text" name="minute.raised_by" id="minute.raised_by" class="form-control" placeholder="20 characters" aria-describedby="helpId" >
-        
-          
-         
-        </div>
-        <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-            <label for="Action"  style="color: white;">Action</label>
-            <input type="text" name="minute.action" id="minute.action" class="form-control" placeholder="20 characters" aria-describedby="helpId">
-          </div>
-         
-          <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-           
-            <label for="to_be_actionedby"  style="color: white;">To be Actioned by</label>
-            <input type="text" name="minute.to_be_actionedby" id="minute.to_be_actionedby" class="form-control" placeholder="20 characters" aria-describedby="helpId">
-            
-      
-        
-          </div>
-         
-          <div class="col shadow p-4 mb-4  mx-auto" style="width: 100px; border-radius: 7px; background-color: rgb(1,33,46);">
-           
-            <label for="Date"  style="color: white;">Date of completion</label>
-            <input type="datetime-local" name="minute.date_of_comp" id="minute.date_of_comp" class="form-control" placeholder="" aria-describedby="helpId">
-            
-      
-        
-          </div>
-      
-        
-          </div>
-          <div class="col shadow p-4 mb-4  mx-auto" style="width: 800px; border-radius: 7px; background-color: rgb(1,33,46);">
-           
-            <label for="info" style="color: white;">Subsequent Information</label>
-            <textarea type="text" name="minute.info" id="minute.info" class="form-control" placeholder="200 characters" aria-describedby="helpId"></textarea>
-            
-      
-        
-          </div>
-          <div align="center">
-          <button type="submit" class="btn btn-success" id="btn">Add Minute</button> <!--add a single button to get all values-->
-        </div>
-         </form>
-        
-        </div>
+
+      <div class="container-fluid">
+        <p style="color:rgb(174, 200, 234)">end</p>
+      </div>
+     
     {% endblock %}

@@ -12,7 +12,7 @@ class Meeting(db.Model):
         return '<Meet %r>' % self.id
 class Minute(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    dates = db.Column(db.String(10))
+    dates = db.Column(db.Date, default=func.Date.now())
     topic = db.Column(db.String(10))
     attendees = db.Column(db.String(10))
     raised_by = db.Column(db.String(10))
