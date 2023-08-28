@@ -6,4 +6,4 @@ Python version 3.10.5 is used to create this project, however the project should
  Python Flask framework ```pip install flask```
  Python Flask-login library ```pip install flask-login```
  Python Flask-sqlalchemy ```pip install flask-sqlalchemy```
- HTML, CSS, BS and JS are aslo required.
+ Django, HTML, CSS, BS and JS are aslo required.
